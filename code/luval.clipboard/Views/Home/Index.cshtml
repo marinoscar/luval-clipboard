@@ -3,50 +3,42 @@
 }
 
 <div class="container">
-    <div class="row">&nbsp;</div>
-    <form id="mainForm" action="SendMessage" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="channelName">Channel Name</label>
-            <input type="text" class="form-control" id="channelName" name="Group" placeholder="Enter the name of the channel">
-        </div>
-        <div class="form-group">
-            <label for="message">Message</label>
-            <input type="text" class="form-control" id="message" name="Message" placeholder="Enter the message to send">
-        </div>
-        <div class="form-group">
-            <label for="imageData">Image</label>
-            <input type="file" class="form-control" id="imageData" name="ImageData">
-        </div>
-        <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Accept Terms and Privacy Policy</label>
-        </div>
-        <button id="submit" type="button" class="btn btn-primary">Submit</button>
-    </form>
-    <div class="row">
-        <div class="col-2">User</div>
-        <div class="col-4"><input type="text" id="userInput" /></div>
-    </div>
-    <div class="row">
-        <div class="col-2">Message</div>
-        <div class="col-4"><input type="text" id="messageInput" /></div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col-6">
-            <input type="button" id="sendButton" value="Send Message" />
+    <div class="form-group">
+        <label for="channelName">Channel Name</label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="channelName" name="Group" placeholder="Enter the name of the channel and click on start">
+            <div class="input-group-append">
+                <button id="channel-btn" class="btn btn-outline-primary" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M14 12h-4v-12h4v12zm4.213-10.246l-1.213 1.599c2.984 1.732 5 4.955 5 8.647 0 5.514-4.486 10-10 10s-10-4.486-10-10c0-3.692 2.016-6.915 5-8.647l-1.213-1.599c-3.465 2.103-5.787 5.897-5.787 10.246 0 6.627 5.373 12 12 12s12-5.373 12-12c0-4.349-2.322-8.143-5.787-10.246z" /></svg></button>
+            </div>
         </div>
     </div>
+    <div id="work-area" class="invisible">
+        <form id="mainForm" action="SendMessage" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="message">Message</label>
+                <input type="text" class="form-control" id="message" name="Message" placeholder="Enter the message to send">
+            </div>
+            <div class="form-group">
+                <label for="imageData">Image</label>
+                <input type="file" class="form-control" id="imageData" name="ImageData">
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Accept Terms and Privacy Policy</label>
+            </div>
+            <button id="submit" type="button" class="btn btn-primary">Submit</button>
+        </form>
+        <div class="row">&nbsp;</div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div id="mainContent" class="card-deck">
+
+            </div>
+        </div>
+    </div>
+
 </div>
-<div class="row">
-    <div class="col-12">
-        <hr />
-    </div>
-</div>
-<div class="row">
-    <div class="col-6">
-        <ul id="messagesList"></ul>
-    </div>
-</div>
+
+<script src="~/js/underscore.min.js"></script>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/chat.js"></script>

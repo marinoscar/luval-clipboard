@@ -37,16 +37,19 @@ namespace luval.clipboard.Controllers
         public async Task<IActionResult> SendMessage(ClipboardMessage msg, IFormFile ImageData)
         {
             System.Diagnostics.Debug.WriteLine(msg.Message);
-            using (var bytes = new MemoryStream())
+            if(ImageData != null)
             {
-                using (var buffer = ImageData.OpenReadStream())
+                using (var bytes = new MemoryStream())
                 {
-                    buffer.CopyTo(bytes);
-                    msg.ImageData = bytes.ToArray();
-                    msg.ImageHeaders = "data:" + ImageData.ContentType + ";base64,";
+                    using (var buffer = ImageData.OpenReadStream())
+                    {
+                        buffer.CopyTo(bytes);
+                        msg.ImageData = bytes.ToArray();
+                        msg.ImageHeaders = "data:" + ImageData.ContentType + ";base64,";
+                    }
                 }
             }
-            await _hubContext.Clients.All.SendAsync("ReceiveMessage", msg);
+            await _hubContext.Clients.All.SendAsync(msg.Group, msg);
             return new OkResult();
         }
 

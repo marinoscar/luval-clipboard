@@ -16,7 +16,7 @@ namespace luval.clipboard.Hubs
 
         public async Task SendClipboard(ClipboardMessage message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", message);
+            await Clients.All.SendAsync(message.Group, message);
         }
     }
 }
