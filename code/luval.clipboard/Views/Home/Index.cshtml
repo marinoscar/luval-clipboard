@@ -13,27 +13,56 @@
         </div>
     </div>
     <div id="work-area" class="invisible">
-        <form id="mainForm" action="SendMessage" method="POST" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea class="form-control" id="message" name="Message"  placeholder="Enter the message to send" rows="3"></textarea>
-                @*<input type="text" class="form-control" id="message" name="Message" placeholder="Enter the message to send">*@
-            </div>
-            <div class="form-group">
-                <label for="imageData">Image</label>
-                <input type="file" class="form-control" id="imageData" name="ImageData">
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="tosCheck">
-                <label class="form-check-label" for="tosCheck">Accept <a href="/TermsOfService" target="_blank">Terms of Service</a></label>
-            </div>
-            <button id="submit" type="button" class="btn btn-primary" disabled>Submit</button>
-        </form>
-        <div class="row">&nbsp;</div>
-        <div class="row">&nbsp;</div>
-        <div class="row">
-            <div id="mainContent" class="card-deck">
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Data Form
+                        </button>
+                    </h2>
+                </div>
 
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <form id="mainForm" action="SendMessage" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea class="form-control" id="message" name="Message" placeholder="Enter the message to send" rows="3"></textarea>
+                                @*<input type="text" class="form-control" id="message" name="Message" placeholder="Enter the message to send">*@
+                            </div>
+                            <div class="form-group">
+                                <label for="imageData">Image</label>
+                                <input type="file" class="form-control" id="imageData" name="ImageData">
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="tosCheck">
+                                <label class="form-check-label" for="tosCheck">Accept <a href="/TermsOfService" target="_blank">Terms of Service</a></label>
+                            </div>
+                            <button id="submit" type="button" class="btn btn-primary" disabled>Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Results
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="row">&nbsp;</div>
+                        <div class="row">&nbsp;</div>
+                        <div class="row">
+                            <div id="mainContent" class="card-deck">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
