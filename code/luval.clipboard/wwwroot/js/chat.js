@@ -19,17 +19,27 @@ document.getElementById('channel-btn').addEventListener('click', function (e) {
 
         var tmpl = '';
         var cardItems = {};
-        var msg = data.message;
-        var lines = msg.split("\n");
+        var lines = [''];
+        var hasText = false;
+        if (data.message != null && data.message != undefined && data.message != '') {
+            lines = data.message.split("\n");
+            hasText = true;
+        }
+        
         var imgSrc = '#';
-        if (data.imageData != null && data.imageData != undefined) {
+        if (data.imageData != null && data.imageData != undefined && hasText) {
             imgSrc = data.imageHeaders + data.imageData;
             tmpl = cardTemplate;
             cardItems = { source: imgSrc, lines: lines };
         }
-        else {
+        else if (hasText) {
             tmpl = cardTemplateNoImage;
             cardItems = { lines: lines };
+        }
+        if (!hasText && data.imageData != null && data.imageData != undefined) {
+            imgSrc = data.imageHeaders + data.imageData;
+            tmpl = cardTemplateNoText;
+            cardItems = { source: imgSrc };
         }
         var compiled = _.template(tmpl);
         var newHtml = compiled(cardItems);

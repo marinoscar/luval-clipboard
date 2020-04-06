@@ -29,6 +29,15 @@ const cardTemplateNoImage = `
 </div>
 `;
 
+const cardTemplateNoText = `
+<div class="card">
+    <img class="card-img-top" src="<%= source %>">
+    <div class="card-body">
+        <a href="#" class="card-link" onClick="$(this).parent().parent().remove();" >Remove</a>
+    </div>
+</div>
+`;
+
 function copyTheContentToClipboard(elements) {
     var text = '';
     var i;
