@@ -24,25 +24,38 @@ document.getElementById('channel-btn').addEventListener('click', function (e) {
     connection.on(channelName, function (data) {
         console.log(data);
 
+        var tmpl = '';
+        var cardItems = {};
         var msg = data.message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
         var imgSrc = '#';
         if (data.imageData != null && data.imageData != undefined) {
             imgSrc = data.imageHeaders + data.imageData;
+            tmpl = cardTemplate;
+            cardItems = { source: imgSrc, content: msg };
         }
-        var compiled = _.template(cardTemplate);
-        var newHtml = compiled({ source: imgSrc, content: msg });
-        $('#mainContent').append(newHtml);
+        else {
+            tmpl = cardTemplateNoImage;
+            cardItems = { content: msg };
+        }
+        var compiled = _.template(tmpl);
+        var newHtml = compiled(cardItems);
+        $('#mainContent').prepend(newHtml);
 
     });
 
 });
 
-
+document.getElementById('tosCheck').addEventListener('change', (event) => {
+    if (event.target.checked) {
+        $('#submit').prop("disabled", false);
+    } else {
+        $('#submit').prop("disabled", true);
+    }
+})
 
 document.getElementById('submit').addEventListener('click', function (e) {
     e.preventDefault();
     var form = document.getElementById('mainForm');
-    //var formData = new FormData(form);
     var formData = getFormData();
     $.ajax({
         url: $(form).attr("action"),

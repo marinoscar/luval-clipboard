@@ -58,7 +58,7 @@ namespace luval.clipboard.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult TermsOfService()
         {
             return View();
         }

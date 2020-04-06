@@ -7,9 +7,18 @@
 const cardTemplate = `
 <div class="card">
     <img class="card-img-top" src="<%= source %>">
-        <div class="card-body">
-            <p class="card-text"><%= content %></p>
-        </div>
-        <a href="#" class="btn btn-danger" onClick="$(this).parent().remove();" ><i class="im im-trash-can"></i></a>
+    <div class="card-body">
+        <p class="card-text"><%= content %></p>
     </div>
+    <a href="#" class="btn btn-danger" onClick="$(this).parent().remove();" ><i class="im im-trash-can"></i></a>
+</div>
+`;
+
+const cardTemplateNoImage = `
+<div class="card">
+    <div class="card-body">
+        <p class="card-text"><%= content %></p>
+    </div>
+    <a href="#" class="btn btn-danger" onClick="$(this).parent().remove();" ><i class="im im-trash-can"></i></a>
+</div>
 `;
