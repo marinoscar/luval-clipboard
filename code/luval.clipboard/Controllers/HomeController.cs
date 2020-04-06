@@ -26,7 +26,6 @@ namespace luval.clipboard.Controllers
         [HttpPost("SendMessage")]
         public async Task<IActionResult> SendMessage(ClipboardMessage msg, IFormFile ImageData)
         {
-            System.Diagnostics.Debug.WriteLine(msg.Message);
             if(ImageData != null)
             {
                 using (var bytes = new MemoryStream())
