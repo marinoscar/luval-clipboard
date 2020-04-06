@@ -23,16 +23,6 @@ namespace luval.clipboard.Controllers
             _hubContext = hubContext;
         }
 
-        /// <summary>
-        /// A
-        /// </summary>
-        /// <remarks>
-        /// Articles to upload image from HTML5
-        /// https://stackoverflow.com/questions/10792986/saving-html-5-canvas-as-image-on-the-server-using-asp-net/10795034
-        /// https://stackoverflow.com/questions/50427513/html-paste-clipboard-image-to-file-input
-        /// https://stackoverflow.com/questions/13198131/how-to-save-an-html5-canvas-as-an-image-on-a-server
-        /// https://mobiarch.wordpress.com/2013/09/25/upload-image-by-copy-and-paste/
-        /// </remarks>
         [HttpPost("SendMessage")]
         public async Task<IActionResult> SendMessage(ClipboardMessage msg, IFormFile ImageData)
         {

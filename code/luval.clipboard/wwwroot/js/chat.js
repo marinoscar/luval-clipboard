@@ -2,13 +2,6 @@
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
-//window.addEventListener('paste', e => {
-//    if (e.clipboardData.items === null || e.clipboardData.items.lenght <= 0) return;
-//    //fileInput.files[0] = e.clipboardData.items[0].getAsFile();
-//    fileInput.files = e.clipboardData.files;
-
-//});
-
 document.getElementById('channel-btn').addEventListener('click', function (e) {
     $('#work-area').removeClass('invisible');
     $('#channel-btn').prop("disabled", true);
