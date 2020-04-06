@@ -22,7 +22,6 @@
                         </button>
                     </h2>
                 </div>
-
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                     <div class="card-body">
                         <form id="mainForm" action="SendMessage" method="POST" enctype="multipart/form-data">
@@ -65,9 +64,10 @@
             </div>
         </div>
     </div>
-
 </div>
+<textarea id="clip-text" style="display:none" rows="10">
 
+</textarea>
 <script src="~/js/underscore.min.js"></script>
 <script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/chat.js"></script>
+<script src="~/js/chat.js" asp-append-version="true"></script>

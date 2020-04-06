@@ -8,17 +8,38 @@ const cardTemplate = `
 <div class="card">
     <img class="card-img-top" src="<%= source %>">
     <div class="card-body">
-        <p class="card-text"><%= content %></p>
+        <% for(var line in lines) { %>
+           <p class="card-text" ><%= lines[line] %></p>
+       <% } %>
+        <a href="#" class="card-link" onClick="copyTheContentToClipboard($(this).parent().find('p'));">Copy text</a>
+        <a href="#" class="card-link" onClick="$(this).parent().parent().remove();" >Remove</a>
     </div>
-    <a href="#" class="btn btn-danger" onClick="$(this).parent().remove();" ><i class="im im-trash-can"></i></a>
 </div>
 `;
 
 const cardTemplateNoImage = `
 <div class="card">
     <div class="card-body">
-        <p class="card-text"><%= content %></p>
+        <% for(var line in lines) { %>
+           <p class="card-text" ><%= lines[line] %></p>
+       <% } %>
+        <a href="#" class="card-link" onClick="copyTheContentToClipboard($(this).parent().find('p'));">Copy text</a>
+        <a href="#" class="card-link" onClick="$(this).parent().parent().remove();" >Remove</a>
     </div>
-    <a href="#" class="btn btn-danger" onClick="$(this).parent().remove();" ><i class="im im-trash-can"></i></a>
 </div>
 `;
+
+function copyTheContentToClipboard(elements) {
+    var text = '';
+    var i;
+    for (i = 0; i < elements.length; i++) {
+        text += $(elements[i]).text() + "\r\n";
+    }
+    var $txtArea = $('#clip-text');
+    $txtArea.show();
+    $txtArea.empty();
+    $txtArea.val(text);
+    $txtArea.select();
+    document.execCommand('copy');
+    $txtArea.hide();
+}

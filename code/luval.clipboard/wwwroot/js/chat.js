@@ -19,16 +19,17 @@ document.getElementById('channel-btn').addEventListener('click', function (e) {
 
         var tmpl = '';
         var cardItems = {};
-        var msg = data.message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        var msg = data.message;
+        var lines = msg.split("\n");
         var imgSrc = '#';
         if (data.imageData != null && data.imageData != undefined) {
             imgSrc = data.imageHeaders + data.imageData;
             tmpl = cardTemplate;
-            cardItems = { source: imgSrc, content: msg };
+            cardItems = { source: imgSrc, lines: lines };
         }
         else {
             tmpl = cardTemplateNoImage;
-            cardItems = { content: msg };
+            cardItems = { lines: lines };
         }
         var compiled = _.template(tmpl);
         var newHtml = compiled(cardItems);
@@ -55,7 +56,7 @@ document.getElementById('submit').addEventListener('click', function (e) {
         type: 'POST',
         data: formData,
         success: function (data) {
-            console.log(data);
+            $('#collapseTwo').collapse('show');
         },
         cache: false,
         contentType: false,
